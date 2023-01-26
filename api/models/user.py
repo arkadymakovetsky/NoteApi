@@ -9,8 +9,8 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), unique=True)
     password_hash = db.Column(db.String(128))
-    notes = db.relationship('NoteModel', backref='author', lazy='dynamic')
     role = db.Column(db.String(32), nullable=False, server_default="simple_user", default="simple_user")
+    notes = db.relationship('NoteModel', backref='author', lazy='dynamic', cascade='all, delete')
 
     def __init__(self, username, password, role="simple_user"):
         self.username = username

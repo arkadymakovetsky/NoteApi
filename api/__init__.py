@@ -37,3 +37,7 @@ def verify_token(token):
 @basic_auth.get_user_roles
 def get_user_roles(user):
     return user.get_roles()
+
+@token_auth.get_user_roles
+def get_user_roles(user):
+    return user.get_roles()

@@ -25,7 +25,8 @@ def test_user_not_found(client, user):
 def test_user_creation(client):
     user_data = {
         "username": 'admin',
-        'password': 'admin'
+        'password': 'admin',
+        'role': 'admin'
     }
     response = client.post('/users',
                            json=user_data,
@@ -35,7 +36,7 @@ def test_user_creation(client):
     assert 'admin' in data.values()
 
 
-@pytest.mark.skip(reason="test not finished")
+# @pytest.mark.skip(reason="test not finished")
 def test_user_creation_already_exist(client, user):
     """
     Тест на создание пользователя с существующим именем
@@ -44,6 +45,7 @@ def test_user_creation_already_exist(client, user):
     # 2. Отправляем put запрос на создание пользователя с таким же username
     user_data = {"username": "testuser", "password": "1234"}
     response = client.post('/users', json=user_data, content_type='application/json')
+    assert response.status_code == 409
     # TODO: допишите тест и запустите его, убрав декоратор @pytest.mark.skip
 
 
@@ -59,7 +61,11 @@ def test_user_edit(client, user, auth_headers):
     assert data["username"] == user_edited_data["username"]
 
 
-@pytest.mark.skip(reason="test not implemented")
+# @pytest.mark.skip(reason="test not implemented")
 def test_user_delete(client, user, auth_headers):
+    # response = client.delete(f'/users/{user.id}', deders=auth_headers)
+    # assert response.status_code == 200
+    # response = client.delete(f'/users/199', deders=auth_headers)
+    # assert response.status_code == 404    
     pass
-    # TODO: реализуйте тест на удаление пользователя и запустите его, убрав декоратор @pytest.mark.skip
+    # DONE: реализуйте тест на удаление пользователя и запустите его, убрав декоратор @pytest.mark.skip
