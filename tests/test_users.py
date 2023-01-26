@@ -64,8 +64,8 @@ def test_user_edit(client, user, auth_headers):
 @pytest.mark.skip(reason="test not implemented")
 def test_user_delete(client, user, auth_headers):
     pass
-    # response = client.delete(f'/users/{user.id}', deders=auth_headers)
+    # response = client.delete(f'/users/{user.id}', headers=auth_headers)
     # assert response.status_code == 200
-    # response = client.delete(f'/users/199', deders=auth_headers)
+    # response = client.delete(f'/users/199', headers=auth_headers)
     # assert response.status_code == 404    
     # TODO: реализуйте тест на удаление пользователя и запустите его, убрав декоратор @pytest.mark.skip
