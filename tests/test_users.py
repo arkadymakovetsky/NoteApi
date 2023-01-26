@@ -61,11 +61,11 @@ def test_user_edit(client, user, auth_headers):
     assert data["username"] == user_edited_data["username"]
 
 
-# @pytest.mark.skip(reason="test not implemented")
+@pytest.mark.skip(reason="test not implemented")
 def test_user_delete(client, user, auth_headers):
+    pass
     # response = client.delete(f'/users/{user.id}', deders=auth_headers)
     # assert response.status_code == 200
     # response = client.delete(f'/users/199', deders=auth_headers)
     # assert response.status_code == 404    
-    pass
-    # DONE: реализуйте тест на удаление пользователя и запустите его, убрав декоратор @pytest.mark.skip
+    # TODO: реализуйте тест на удаление пользователя и запустите его, убрав декоратор @pytest.mark.skip
