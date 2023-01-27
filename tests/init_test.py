@@ -1,15 +1,21 @@
 import os
-
-os.environ["DATABASE_URI"] = 'sqlite:///:memory:'
 from api import db
 from app import app
 from base64 import b64encode
 from api.models.user import UserModel
 import pytest
 
+from config import Config
+
+
+os.environ["DATABASE_URI"] = 'sqlite:///:memory:'
+
 
 @pytest.fixture()
 def application():
+    app.config.update({
+        "SQLALCHEMY_DATABASE_URI": Config.TEST_DATABASE
+    })
     with app.app_context():
         db.create_all()
         yield app
