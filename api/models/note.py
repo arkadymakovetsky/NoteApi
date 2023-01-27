@@ -1,5 +1,6 @@
 from api import db
 from api.models.user import UserModel
+from sqlalchemy.exc import IntegrityError
 
 
 class NoteModel(db.Model):
@@ -9,8 +10,11 @@ class NoteModel(db.Model):
     private = db.Column(db.Boolean(), default=True, nullable=False)
 
     def save(self):
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except IntegrityError:  # Обработка ошибки "Duplicate key"
+            db.session.rollback()
 
     def delete(self):
         db.session.delete(self)

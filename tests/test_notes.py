@@ -76,6 +76,6 @@ def test_note_edit(client, note_admin, auth_headers):
 
 
 @pytest.mark.skip(reason="test not implemented")
-def test_note_delete(client, auth_headers):
+def test_note_delete(client, note, auth_headers):
     pass
     # TODO: реализуйте тест на удаление заметки и запустите его, убрав декоратор @pytest.mark.skip
