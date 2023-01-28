@@ -17,7 +17,6 @@ pytest = "*"
 flasgger = "*"
 apispec = "*"
 flask-apispec = "*"
-coverage = "*"
 
 [dev-packages]
 
